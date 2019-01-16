@@ -1,8 +1,15 @@
-let restaurants,
-  neighborhoods,
-  cuisines
+let restaurants,neighborhoods,cuisines
 var newMap
 var markers = []
+/**
+ * Setting a Service Worker check
+ */
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js')
+    .catch(err=>console.log(`Service Worker error: ${err}`));
+  })
+}
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
